@@ -131,21 +131,53 @@ symlinked to `AGENTS.md` so both Codex and Claude Code see the same content.
 
 ## Installation
 
-Copy the `skills/lumen/` folder into your agent's skills directory:
+### One-liner (Claude Code, global)
 
 ```bash
-# Claude Code
-cp -r skills/lumen/ .claude/skills/lumen/
-
-# Kiro
-cp -r skills/lumen/ .kiro/skills/lumen/
+curl -fsSL https://raw.githubusercontent.com/shev-pro/lumen/main/scripts/install.sh | bash
 ```
+
+### Via skills.sh
+
+```bash
+npx skills add shev-pro/lumen
+```
+
+### Manual options
+
+```bash
+# Claude Code — global (all your projects)
+bash scripts/install.sh
+
+# Claude Code — this project only
+bash scripts/install.sh --project
+
+# Cursor — global
+bash scripts/install.sh --cursor
+
+# All supported tools at once
+bash scripts/install.sh --all
+```
+
+### Platform paths (if you prefer to copy manually)
+
+| Tool | Global path | Project path |
+|------|------------|--------------|
+| Claude Code | `~/.claude/skills/lumen/` | `.claude/skills/lumen/` |
+| Cursor | `~/.cursor/skills/lumen/` | `.cursor/skills/lumen/` |
+| Gemini CLI | `~/.gemini/skills/lumen/` | — |
+| OpenAI Codex | — | `.codex/skills/lumen/` |
+| Kiro | — | `.kiro/skills/lumen/` |
+
+Lumen follows the [Agent Skills open standard](https://agentskills.io/specification) and works with any tool that supports it — Claude Code, Cursor, GitHub Copilot, Gemini CLI, Windsurf, Roo Code, and more.
 
 Then invoke with any `/lumen` command.
 
 ## File Layout
 
 ```
+scripts/
+└── install.sh                      # Skill installer (Claude Code, Cursor, and more)
 skills/lumen/
 ├── SKILL.md                        # Main skill definition
 ├── assets/
