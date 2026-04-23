@@ -76,9 +76,8 @@ about whether the new state is intentional. Flag them and wait for the user to c
 
 **What to look for:**
 
-Doc files that exist under `docs/` but are not:
-1. Listed in `AGENTS.md`'s Documentation Index, AND
-2. Not linked from any other doc
+Doc files that are **neither** listed in `AGENTS.md`'s Documentation Index
+**nor** linked from any other doc.
 
 These pages are invisible to navigation and will not be read by agents or humans
 following the index.

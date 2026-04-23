@@ -94,8 +94,9 @@ or nothing at all.
 - `/lumen scan`, `/lumen update`, `/lumen status`, `/lumen rules` → do NOT proceed.
   Explain that Lumen needs code to work with and suggest running `/lumen init` first
   to set up stubs, or adding code and then running the command.
-- `/lumen lint` → only proceed if `docs/` exists and contains populated files. If not,
-  explain there's nothing to lint and suggest running `/lumen scan` first.
+- `/lumen lint` → only proceed if `docs/` exists and contains at least one file
+  outside `raw_data/` that is not a pure `<!-- TODO -->` stub. If not, explain
+  there's nothing to lint and suggest running `/lumen scan` first.
 - `/lumen ingest` → only proceed if `docs/raw_data/` exists and has files.
 - `/lumen <question>` → explain there's no documentation yet and suggest init.
 
@@ -275,8 +276,8 @@ the user (see Empty Repository Guard above).
    - `docs/integrations.md` — if integration density > 3
    - `docs/codestyle.md` — if conventions exist beyond linter configs
    - `docs/deployment.md` — if infra/deploy configs detected
-   - `docs/rationale.md` — if domain complexity is high (start the file; content
-     comes from rationale discovery during component scans)
+   - `docs/rationale.md` — if domain complexity is Medium or High (start the file;
+     content comes from rationale discovery during component scans)
    - `docs/project-context.md` — if non-technical context exists or was ingested
      (stakeholder constraints, product requirements, business rules)
 
@@ -622,8 +623,10 @@ Natural language query against the documentation.
    so future sessions start with this already understood?"*
    If the user agrees, write the page and add it to `AGENTS.md`'s Documentation Index.
 
-7. **Append to `docs/log.md`**:
-   `## [YYYY-MM-DD] query | "<question summary>" — <filed as docs/X.md | not filed>`
+7. **Append to `docs/log.md`** *(only if the answer was filed as a new page in
+   step 6, to avoid log noise from ephemeral lookups)*:
+   `## [YYYY-MM-DD] query | "<question summary>" — filed as docs/X.md`
+   Trivial or read-only queries may be omitted from the log.
 
 ---
 

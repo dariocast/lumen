@@ -41,6 +41,10 @@ This phase runs in the main agent context. Do NOT delegate it to subagents.
    - `docs/integrations.md` — if integration density > 3
    - `docs/codestyle.md` — if conventions exist beyond linter configs
    - `docs/deployment.md` — if infra/deploy configs detected
+   - `docs/rationale.md` — if domain complexity is Medium or High (start the file;
+     content comes from rationale discovery during component scans)
+   - `docs/project-context.md` — if non-technical context exists or was ingested
+     (stakeholder constraints, product requirements, business rules)
 
    Global docs MUST be written before Phase 2, because subagents need global
    context (stack, conventions) to produce good component docs.
